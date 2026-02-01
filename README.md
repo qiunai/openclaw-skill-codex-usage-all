@@ -34,6 +34,14 @@ Add multiple `openai-codex:*` profiles into your **agent auth profile store** (t
 
 The profile id is the string after `openai-codex:` (e.g. `openai-codex:ABC`).
 
+### 1.3 (Optional) Set OpenClaw install path
+
+If your OpenClaw install path is non‑standard, set:
+
+```
+export OPENCLAW_ROOT=/path/to/openclaw
+```
+
 ---
 
 ## 2) Switch current account in chat

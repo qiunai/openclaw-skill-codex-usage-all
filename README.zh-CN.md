@@ -34,6 +34,14 @@
 
 profile id 是 `openai-codex:` 后面的部分（例如 `openai-codex:ABC`）。
 
+### 1.3 （可选）设置 OpenClaw 安装路径
+
+如果你的 OpenClaw 安装路径不是默认值，可以设置：
+
+```
+export OPENCLAW_ROOT=/path/to/openclaw
+```
+
 ---
 
 ## 2) 会话里切换账号

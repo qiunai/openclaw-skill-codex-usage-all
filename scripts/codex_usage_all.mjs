@@ -12,6 +12,7 @@
 */
 
 import path from "node:path";
+import os from "node:os";
 
 function parseArgs(argv) {
   const out = { json: false, agentId: null };
@@ -47,7 +48,10 @@ function formatBeijingDateTime(ms) {
 
 // Import OpenClaw internals from global install.
 // NOTE: this is intentionally pinned to the installed OpenClaw package.
-const OPENCLAW_ROOT = "/home/parallels/.npm-global/lib/node_modules/openclaw";
+// You can override with OPENCLAW_ROOT if your install path differs.
+const OPENCLAW_ROOT =
+  process.env.OPENCLAW_ROOT ||
+  path.join(os.homedir(), ".npm-global", "lib", "node_modules", "openclaw");
 
 const { loadConfig } = await import(path.join(OPENCLAW_ROOT, "dist/config/config.js"));
 const { resolveAgentDir, resolveDefaultAgentId } = await import(path.join(
