@@ -28,7 +28,7 @@ Copy and send this to OpenClaw bot to set memory + auto-install:
 
 ```
 Please add the following to long‑term memory:
-When I say “查询用量” or “查询 Codex 用量”, always use the OpenClaw skill "codex-usage-all" to query all openai-codex profiles and return a merged report. If the skill is not installed, automatically install it from:
+When I say “查询用量” or “查询 Codex 用量”, always use the OpenClaw skill "codex-usage-all" to query all openai-codex profiles and return a merged report. Determine the **current session account** from /status and pass it to the script (so the 🟢 marker matches the live session). If the skill is not installed, automatically install it from:
 https://github.com/<your-username>/openclaw-skill-codex-usage-all
 and then run it. For future requests, run it directly.
 ```

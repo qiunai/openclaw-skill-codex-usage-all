@@ -28,7 +28,7 @@
 
 ```
 请把以下内容加入长期记忆：
-当我说“查询用量”或“查询 Codex 用量”时，始终调用 OpenClaw skill「codex-usage-all」，查询所有 openai-codex 账号并返回合并结果。如果该 skill 未安装，请先从下列仓库自动安装：
+当我说“查询用量”或“查询 Codex 用量”时，始终调用 OpenClaw skill「codex-usage-all」，查询所有 openai-codex 账号并返回合并结果。先从 /status 判定**当前会话账号**并传给脚本（确保 🟢 标记对应当前会话）。如果该 skill 未安装，请先从下列仓库自动安装：
 https://github.com/<your-username>/openclaw-skill-codex-usage-all
 然后再执行；后续请求直接调用该 skill。
 ```
