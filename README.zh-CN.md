@@ -56,7 +56,31 @@ export OPENCLAW_ROOT=/path/to/openclaw
 
 ---
 
-## 3) 使用方式
+## 3) 安装（GitHub clone）
+
+```bash
+git clone https://github.com/<your-username>/openclaw-skill-codex-usage-all.git
+```
+
+放到 OpenClaw workspace 的 skills 目录，例如：
+
+```bash
+mv openclaw-skill-codex-usage-all /path/to/openclaw/workspace/skills/codex-usage-all
+```
+
+---
+
+## 4) （可选）添加长期记忆快捷触发
+
+如果你维护 `MEMORY.md`，可以加入一条规则：
+
+> 当我说“查询用量”时，始终调用 `codex-usage-all` skill，查询所有 Codex 账号并返回合并结果。
+
+这样之后只要说“查询用量”，助手就会自动调用该 skill。
+
+---
+
+## 5) 使用方式
 
 ```bash
 node /path/to/codex_usage_all.mjs
@@ -71,7 +95,7 @@ node /path/to/codex_usage_all.mjs --agentId main
 
 ---
 
-## 4) 输出示例
+## 6) 输出示例
 
 ```
 📊 Codex usage (all profiles)

@@ -56,7 +56,31 @@ The profile after `@` is your **auth profile id**.
 
 ---
 
-## 3) Run
+## 3) Install (GitHub clone)
+
+```bash
+git clone https://github.com/<your-username>/openclaw-skill-codex-usage-all.git
+```
+
+Place it under your OpenClaw workspace skills folder, e.g.:
+
+```bash
+mv openclaw-skill-codex-usage-all /path/to/openclaw/workspace/skills/codex-usage-all
+```
+
+---
+
+## 4) (Optional) Add a memory shortcut
+
+If you maintain `MEMORY.md`, you can add a rule like:
+
+> When I say “查询用量”, always run the `codex-usage-all` skill to query all Codex profiles and return the merged report.
+
+This lets you simply say “查询用量” and the assistant will automatically run this skill.
+
+---
+
+## 5) Run
 
 ```bash
 node /path/to/codex_usage_all.mjs
@@ -71,7 +95,7 @@ node /path/to/codex_usage_all.mjs --agentId main
 
 ---
 
-## 4) Example Output
+## 6) Example Output
 
 ```
 📊 Codex usage (all profiles)
