@@ -15,11 +15,12 @@ import path from "node:path";
 import os from "node:os";
 
 function parseArgs(argv) {
-  const out = { json: false, agentId: null };
+  const out = { json: false, agentId: null, currentProfile: null };
   for (let i = 2; i < argv.length; i++) {
     const a = argv[i];
     if (a === "--json") out.json = true;
     else if (a === "--agentId") out.agentId = argv[++i] ?? null;
+    else if (a === "--currentProfile") out.currentProfile = argv[++i] ?? null;
   }
   return out;
 }
@@ -86,21 +87,27 @@ if (!profileIds.length) {
   process.exit();
 }
 
-// "Current" = store.lastGood.openai-codex OR store.order.openai-codex[0] OR first profile.
+// "Current" precedence:
+// 1) Caller-provided --currentProfile (e.g. derived from /status)
+// 2) store.lastGood.openai-codex
+// 3) store.order.openai-codex[0]
+// 4) first discovered profile
+//
 // NOTE: This script does NOT modify OpenClaw config. The caller (agent) should
 // patch `auth.order.openai-codex` via OpenClaw config.patch when needed.
-const currentProfile =
+let currentProfile =
+  args.currentProfile ||
   store.lastGood?.["openai-codex"] ||
   store.order?.["openai-codex"]?.[0] ||
   profileIds[0];
 
-const suggestedOrder = (() => {
-  const stored = Array.isArray(store.order?.["openai-codex"]) ? store.order["openai-codex"] : [];
-  const merged = [currentProfile, ...stored, ...profileIds].filter(Boolean);
-  const deduped = [];
-  for (const id of merged) if (!deduped.includes(id)) deduped.push(id);
-  return deduped;
-})();
+// If caller passes a profile that isn't available for this agent, fall back safely.
+if (currentProfile && !profileIds.includes(currentProfile)) {
+  currentProfile =
+    store.lastGood?.["openai-codex"] ||
+    store.order?.["openai-codex"]?.[0] ||
+    profileIds[0];
+}
 
 // Fetch usage for each profile
 const results = [];
@@ -139,7 +146,6 @@ if (args.json) {
         ok: true,
         agentId,
         currentProfile,
-        suggestedAuthOrder: suggestedOrder,
         results: results.map((r) => {
           if (!r.ok) return r;
           const { provider, displayName, windows, plan, error } = r.snapshot;
@@ -162,7 +168,6 @@ if (args.json) {
   console.log(`📊 **Codex usage (all profiles)**`);
   console.log(`Agent: ${agentId}`);
   console.log(`Current profile (best-effort): ${currentProfile}`);
-  console.log(`Suggested auth order: ${suggestedOrder.join("  →  ")}`);
 
   for (const r of results) {
     const isCurrent = r.profileId === currentProfile;

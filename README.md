@@ -104,6 +104,7 @@ Optional:
 ```bash
 node /path/to/codex_usage_all.mjs --json
 node /path/to/codex_usage_all.mjs --agentId main
+node /path/to/codex_usage_all.mjs --currentProfile openai-codex:ABC
 ```
 
 ---
@@ -114,7 +115,6 @@ node /path/to/codex_usage_all.mjs --agentId main
 📊 Codex usage (all profiles)
 Agent: main
 Current profile (best-effort): openai-codex:ABC
-Suggested auth order: openai-codex:ABC  →  openai-codex:DEF  →  openai-codex:GHI
 **【openai-codex:GHI】**
   Plan:   team
   • 5h: **Remaining 100**   ⏳ Reset  2026-02-02  01:26:21  (Beijing)
