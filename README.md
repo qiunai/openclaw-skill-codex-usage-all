@@ -22,6 +22,19 @@ It **does not** print tokens or secrets.
 
 ---
 
+## 0) One‑click prompt (paste to your AI)
+
+Copy and send this to your AI to set memory + auto-install:
+
+```
+Please add the following to long‑term memory:
+When I say “查询用量” or “查询 Codex 用量”, always use the OpenClaw skill "codex-usage-all" to query all openai-codex profiles and return a merged report. If the skill is not installed, automatically install it from:
+https://github.com/<your-username>/openclaw-skill-codex-usage-all
+and then run it. For future requests, run it directly.
+```
+
+---
+
 ## 1) Prerequisites
 
 ### 1.1 Add multiple `openai-codex` profiles

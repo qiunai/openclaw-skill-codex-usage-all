@@ -22,6 +22,19 @@
 
 ---
 
+## 0) 一键提示词（发给你的 AI）
+
+复制下面内容，发给你的 AI 即可设置长期记忆并自动安装：
+
+```
+请把以下内容加入长期记忆：
+当我说“查询用量”或“查询 Codex 用量”时，始终调用 OpenClaw skill「codex-usage-all」，查询所有 openai-codex 账号并返回合并结果。如果该 skill 未安装，请先从下列仓库自动安装：
+https://github.com/<your-username>/openclaw-skill-codex-usage-all
+然后再执行；后续请求直接调用该 skill。
+```
+
+---
+
 ## 1) 前置条件
 
 ### 1.1 添加多个 `openai-codex` profiles
