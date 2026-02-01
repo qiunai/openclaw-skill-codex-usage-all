@@ -22,9 +22,9 @@ It **does not** print tokens or secrets.
 
 ---
 
-## 0) One‑click prompt (paste to your AI)
+## 0) One‑click prompt (paste to OpenClaw bot)
 
-Copy and send this to your AI to set memory + auto-install:
+Copy and send this to OpenClaw bot to set memory + auto-install:
 
 ```
 Please add the following to long‑term memory:
